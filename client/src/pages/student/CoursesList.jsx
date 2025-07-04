@@ -33,7 +33,7 @@ function CoursesList() {
                 className='text-blue-600 cursor-pointer hover:text-blue-800 transition-colors'
                 onClick={() => navigate('/')}
               >
-                Homee
+                Home
               </span>{' '}
               <span className='mx-2'>/</span>
               <span>Course List</span>
