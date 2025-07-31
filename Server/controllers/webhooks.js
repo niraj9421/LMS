@@ -43,12 +43,10 @@ export const clerkWebhooks = async (req, res) => {
       }
 
       default: {
-        console.log("Unhandled Clerk webhook type:", type);
-        return res.status(400).json({ error: "Unhandled event type" });
+        break;
       }
     }
   } catch (error) {
-    console.error("Webhook error:", error);
-    return res.status(500).json({ success: false, message: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
