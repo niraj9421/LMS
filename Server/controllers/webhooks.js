@@ -20,26 +20,29 @@ export const clerkWebhooks = async (req, res) => {
         const userData = {
           _id: data.id,
           email: data.email_addresses[0].email_address,
-          name: `${data.first_name} ${data.last_name}`,
+          name: data.first_name + " " + data.last_name,
           imageUrl: data.image_url,
         };
         await User.create(userData);
-        return res.json({});
+        res.json({})
+        break;
       }
 
       case "user.updated": {
         const userData = {
           email: data.email_addresses[0].email_address,
-          name: `${data.first_name} ${data.last_name}`,
+          name: data.first_name + " " + data.last_name,
           imageUrl: data.image_url,
-        };
+        }
         await User.findByIdAndUpdate(data.id, userData);
-        return res.json({});
+        res.json({})
+        break;
       }
 
       case "user.deleted": {
-        await User.findByIdAndDelete(data.id);
-        return res.json({});
+        await User.findByIdAndDelete(data.id)
+        res.json({})
+        break;
       }
 
       default: {
